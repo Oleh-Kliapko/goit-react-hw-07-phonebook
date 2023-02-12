@@ -28,12 +28,8 @@ export const App = () => {
       <WrapperPhonebook>
         <Title>Phonebook</Title>
         <ContactForm />
-        {!isLoading && !error && (
-          <>
-            <TitleContacts>Contacts</TitleContacts>
-            <Filter />
-          </>
-        )}
+        <TitleContacts>Contacts</TitleContacts>
+        <Filter />
         {isLoading && !error && <Loader />}
         {error && !isLoading && <Error />}
         <WrapperContacts>
