@@ -4,6 +4,10 @@ import 'react-toastify/dist/ReactToastify.css';
 export const Notification = addedName =>
   toast.warn(`"${addedName}" is already in contacts`);
 
+export function Error() {
+  toast.error('Something is wrong. Try again');
+}
+
 export const patternName =
   "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$";
 

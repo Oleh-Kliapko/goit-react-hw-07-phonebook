@@ -2,6 +2,7 @@ import { useDispatch } from 'react-redux';
 import { FilterWrapper, FilterInput } from './Filter.styled';
 import { setFilterValue } from 'redux/filterSlice';
 
+
 export const Filter = () => {
   const dispatch = useDispatch();
 

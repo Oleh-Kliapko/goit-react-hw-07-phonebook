@@ -9,13 +9,8 @@ import {
   Label,
   ErrorInput,
 } from './ContactForm.styled';
-import {
-  patternName,
-  patternNumber,
-  errorName,
-  errorNumber,
-} from '../../utils';
-import { addContact } from 'redux/contactSlice';
+import { patternName, patternNumber, errorName, errorNumber } from 'utils';
+import { addContact } from 'redux/operations';
 import { getContacts } from 'redux/selectors';
 import { Notification } from 'utils';
 
@@ -23,7 +18,7 @@ export const ContactForm = () => {
   const schema = yup
     .object({
       name: yup.string().required(),
-      number: yup.number().positive().integer().required(),
+      phone: yup.number().positive().integer().required(),
     })
     .required();
 
@@ -34,7 +29,7 @@ export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const onFormSubmit = ({ name, number }) => {
+  const onFormSubmit = ({ name, phone }) => {
     const isFindName = contacts.find(state => state.name === name);
     if (isFindName) {
       Notification(name);
@@ -42,7 +37,7 @@ export const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, number }));
+    dispatch(addContact({ name, phone }));
     reset();
   };
 
@@ -55,12 +50,12 @@ export const ContactForm = () => {
         />
         {formState.errors.name && <ErrorInput>{errorName}</ErrorInput>}
       </Label>
-      <Label htmlFor="number">
-        Number
+      <Label htmlFor="phone">
+        Phone number
         <Input
-          {...register('number', { required: true, pattern: patternNumber })}
+          {...register('phone', { required: true, pattern: patternNumber })}
         />
-        {formState.errors.number && <ErrorInput>{errorNumber}</ErrorInput>}
+        {formState.errors.phone && <ErrorInput>{errorNumber}</ErrorInput>}
       </Label>
       <Button type="submit" />
     </FormWrapper>
