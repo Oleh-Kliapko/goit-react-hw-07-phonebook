@@ -11,7 +11,7 @@ import {
 } from './ContactForm.styled';
 import { patternName, patternNumber, errorName, errorNumber } from 'utils';
 import { addContact } from 'redux/operations';
-import { getContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
 import { Notification } from 'utils';
 
 export const ContactForm = () => {
@@ -27,7 +27,7 @@ export const ContactForm = () => {
   });
 
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
 
   const onFormSubmit = ({ name, phone }) => {
     const isFindName = contacts.find(state => state.name === name);

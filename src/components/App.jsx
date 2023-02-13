@@ -11,12 +11,12 @@ import { ContactForm } from './ContactForm';
 import { ContactsList } from './ContactsList';
 import { Filter } from './Filter';
 import { fetchContacts } from 'redux/operations';
-import { getIsLoading, getError } from 'redux/selectors';
+import { selectIsLoading, selectError } from 'redux/selectors';
 import { Loader, Error } from 'utils';
 
 export const App = () => {
-  const isLoading = useSelector(getIsLoading);
-  const error = useSelector(getError);
+  const isLoading = useSelector(selectIsLoading);
+  const error = useSelector(selectError);
   const dispatch = useDispatch();
 
   useEffect(() => {
